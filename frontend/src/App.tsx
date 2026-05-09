@@ -66,7 +66,7 @@ export default function App() {
                 Histórico de Consultas
               </h2>
             </div>
-            <LeadHistory refreshTrigger={refreshTrigger} />
+            <LeadHistory refreshTrigger={refreshTrigger} onSelectLead={handleResult} />
           </aside>
         </div>
 

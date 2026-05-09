@@ -3,10 +3,11 @@ import { Clock, Building2, MapPin, RefreshCw, ChevronRight } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { listLeads } from '@/lib/api'
-import type { LeadListItem } from '@/types/lead'
+import type { LeadListItem, Lead } from '@/types/lead'
 
 interface LeadHistoryProps {
   refreshTrigger: number
+  onSelectLead: (lead: Lead) => void
 }
 
 function situationVariant(situation: string | null): 'success' | 'danger' | 'warning' | 'muted' {
@@ -32,7 +33,7 @@ function formatRelativeTime(dateStr: string): string {
   return `há ${diffDays}d`
 }
 
-export function LeadHistory({ refreshTrigger }: LeadHistoryProps) {
+export function LeadHistory({ refreshTrigger, onSelectLead }: LeadHistoryProps) {
   const [leads, setLeads] = useState<LeadListItem[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -95,6 +96,34 @@ export function LeadHistory({ refreshTrigger }: LeadHistoryProps) {
       {leads.map((lead) => (
         <div
           key={lead.id}
+          onClick={() => {
+            onSelectLead({
+              id: lead.id,
+              name: lead.name,
+              email: lead.email,
+              phone: lead.phone,
+              role: lead.role,
+              cnpj: lead.cnpj,
+              createdAt: lead.createdAt,
+              company: {
+                name: lead.companyName,
+                tradeName: lead.tradeName,
+                cnaeCode: lead.cnaeCode,
+                cnaeDesc: lead.cnaeDesc,
+                segment: lead.segment,
+                employeeRange: lead.employeeRange,
+                situation: lead.situation,
+                legalNature: lead.legalNature,
+                openedAt: lead.openedAt,
+                capital: lead.capital,
+                city: lead.city,
+                state: lead.state,
+                zipCode: lead.zipCode,
+                phone: lead.phone1,
+                email: lead.email1,
+              }
+            })
+          }}
           className="group flex items-center gap-3 rounded-xl border border-white/8 bg-white/3 p-4 hover:bg-white/5 hover:border-indigo-500/20 transition-all duration-200 cursor-pointer"
         >
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-indigo-500/10 border border-indigo-500/10 group-hover:bg-indigo-500/15 transition-colors">

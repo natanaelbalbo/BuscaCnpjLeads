@@ -169,14 +169,11 @@ A API retorna o código CNAE numérico. Implementei um mapper que agrupa os CNAE
 
 **Campo "Cargo" no formulário**
 O enunciado menciona o cargo como dado estratégico para análise de leads mas não o listava como campo obrigatório do formulário. Optei por incluí-lo, pois é uma informação que o time de vendas precisaria para priorização e abordagem.
-
-**Frontend — Vercel, Backend — Railway**
-O Vercel não suporta processos persistentes (necessário para SQLite), então separei o deploy: frontend estático no Vercel e a API no Railway, que oferece disco persistente no plano gratuito.
 ---
 
 ## Tempo gasto
 
-Aproximadamente 1h30m de planejamento da arquitetura e decisões de projeto, e 4h de implementação e ajustes finos de UI.
+Aproximadamente 1h30m de planejamento da arquitetura e decisões de projeto, e 5h de implementação e ajustes finos de UI.
 
 ---
 
