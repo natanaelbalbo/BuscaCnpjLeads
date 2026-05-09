@@ -41,13 +41,15 @@ export function LeadHistory({ refreshTrigger }: LeadHistoryProps) {
     try {
       const data = await listLeads()
       setLeads(data)
-    } catch {
+    } catch (err) {
+      console.error(err)
     } finally {
       setLoading(false)
     }
   }, [])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     void fetchLeads()
   }, [fetchLeads, refreshTrigger])
 
