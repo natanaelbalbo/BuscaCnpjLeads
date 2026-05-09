@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --background-secondary: 222 47% 15%;
+    --background-card: 222 44% 14%;
+    --border: 222 30% 22%;
+    --primary: 246 80% 60%;
+    --primary-hover: 246 80% 55%;
+    --success: 160 60% 45%;
+    --warning: 38 92% 50%;
+    --danger: 0 72% 51%;
+    --muted: 215 20% 55%;
+    --foreground: 210 40% 98%;
+    --foreground-muted: 215 20% 65%;
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}

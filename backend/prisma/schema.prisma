@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id            Int      @id @default(autoincrement())
+  name          String
+  email         String
+  phone         String
+  role          String
+  cnpj          String
+
+  // Enriched data from BrasilAPI
+  companyName   String?
+  tradeName     String?
+  cnaeCode      String?
+  cnaeDesc      String?
+  segment       String?
+  employeeRange String?
+  situation     String?
+  legalNature   String?
+  openedAt      String?
+  capital       String?
+  city          String?
+  state         String?
+  zipCode       String?
+  phone1        String?
+  email1        String?
+
+  rawData       String? // Full JSON from BrasilAPI
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([cnpj])
+  @@index([email])
+}
