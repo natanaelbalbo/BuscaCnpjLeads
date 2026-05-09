@@ -83,6 +83,18 @@ npm run dev
 
 O frontend estará disponível em `http://localhost:5173`.
 
+### 4. Como rodar os testes automatizados
+
+O projeto possui uma suíte completa de testes unitários e de integração. Para rodá-los:
+
+```bash
+# No diretório backend:
+npm run test
+
+# No diretório frontend:
+npm run test
+```
+
 ---
 
 ## Endpoints da API
@@ -169,6 +181,12 @@ A API retorna o código CNAE numérico. Implementei um mapper que agrupa os CNAE
 
 **Campo "Cargo" no formulário**
 O enunciado menciona o cargo como dado estratégico para análise de leads mas não o listava como campo obrigatório do formulário. Optei por incluí-lo, pois é uma informação que o time de vendas precisaria para priorização e abordagem.
+
+**Testes Automatizados (Vitest + Supertest)**
+A aplicação conta com uma robusta suíte de testes unitários e de integração (tanto no front quanto no back). Os testes cobrem desde validações do Zod e máscaras até os endpoints da API (simulando requisições e retornos).
+
+**Integração Contínua (CI) via GitHub Actions**
+Configurei um pipeline de CI utilizando GitHub Actions (`.github/workflows/ci.yml`). A cada push na branch principal, o pipeline constrói a aplicação, verifica o linter e roda todos os testes automatizados, assegurando que o código mantenha sempre o padrão de qualidade exigido.
 ---
 
 ## Tempo gasto
