@@ -93,7 +93,7 @@ export function LeadHistory({ refreshTrigger }: LeadHistoryProps) {
       {leads.map((lead) => (
         <div
           key={lead.id}
-          className="group flex items-center gap-3 rounded-xl border border-white/8 bg-white/3 p-4 hover:bg-white/5 hover:border-indigo-500/20 transition-all duration-200"
+          className="group flex items-center gap-3 rounded-xl border border-white/8 bg-white/3 p-4 hover:bg-white/5 hover:border-indigo-500/20 transition-all duration-200 cursor-pointer"
         >
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-indigo-500/10 border border-indigo-500/10 group-hover:bg-indigo-500/15 transition-colors">
             <Building2 className="h-5 w-5 text-indigo-400" />
