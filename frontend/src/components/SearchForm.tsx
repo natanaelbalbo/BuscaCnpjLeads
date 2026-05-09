@@ -98,7 +98,9 @@ export function SearchForm({ onResult }: SearchFormProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* nome */}
         <div className="space-y-1.5">
-          <Label htmlFor="name">Nome completo</Label>
+          <Label htmlFor="name">
+            Nome completo <span className="text-red-500">*</span>
+          </Label>
           <Input
             id="name"
             placeholder="João da Silva"
@@ -113,7 +115,9 @@ export function SearchForm({ onResult }: SearchFormProps) {
 
         {/* email */}
         <div className="space-y-1.5">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email">
+            Email <span className="text-red-500">*</span>
+          </Label>
           <Input
             id="email"
             type="email"
@@ -129,7 +133,9 @@ export function SearchForm({ onResult }: SearchFormProps) {
 
         {/* telefone */}
         <div className="space-y-1.5">
-          <Label htmlFor="phone">Telefone</Label>
+          <Label htmlFor="phone">
+            Telefone <span className="text-red-500">*</span>
+          </Label>
           <Input
             id="phone"
             placeholder="(11) 98765-4321"
@@ -144,7 +150,9 @@ export function SearchForm({ onResult }: SearchFormProps) {
 
         {/* cargo */}
         <div className="space-y-1.5">
-          <Label htmlFor="role">Cargo na empresa</Label>
+          <Label htmlFor="role">
+            Cargo na empresa <span className="text-red-500">*</span>
+          </Label>
           <Input
             id="role"
             placeholder="CEO, Diretor de Marketing..."
@@ -159,7 +167,9 @@ export function SearchForm({ onResult }: SearchFormProps) {
 
         {/* cnpj */}
         <div className="space-y-1.5 sm:col-span-2">
-          <Label htmlFor="cnpj">CNPJ</Label>
+          <Label htmlFor="cnpj">
+            CNPJ <span className="text-red-500">*</span>
+          </Label>
           <Input
             id="cnpj"
             placeholder="00.000.000/0000-00"
