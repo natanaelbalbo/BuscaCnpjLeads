@@ -187,6 +187,7 @@ A aplicação conta com uma robusta suíte de testes unitários e de integraçã
 
 **Integração Contínua (CI) via GitHub Actions**
 Configurei um pipeline de CI utilizando GitHub Actions (`.github/workflows/ci.yml`). A cada push na branch principal, o pipeline constrói a aplicação, verifica o linter e roda todos os testes automatizados, assegurando que o código mantenha sempre o padrão de qualidade exigido.
+
 ---
 
 ## Tempo gasto
