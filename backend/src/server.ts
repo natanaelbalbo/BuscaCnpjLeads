@@ -6,12 +6,15 @@ import leadRoutes from './routes/lead.routes'
 const app = express()
 const PORT = process.env.PORT ?? 3333
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:4173',
+  ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
+]
+
 app.use(
   cors({
-    origin: [
-      'http://localhost:5173',
-      'http://localhost:4173',
-    ],
+    origin: allowedOrigins,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   }),
