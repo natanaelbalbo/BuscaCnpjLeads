@@ -1,5 +1,8 @@
 FROM node:20-slim
 
+# Install OpenSSL - required by Prisma
+RUN apt-get update -y && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 # Copy package files and prisma schema first
@@ -20,6 +23,5 @@ RUN npm run build
 
 EXPOSE 3333
 
-# At runtime, DATABASE_URL is available from Railway environment variables
-# prisma db push applies the schema to the PostgreSQL database
+# DATABASE_URL is injected by Railway at runtime
 CMD ["sh", "-c", "npx prisma db push && node dist/server.js"]
