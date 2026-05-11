@@ -9,7 +9,7 @@ const PORT = process.env.PORT ?? 3333
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:4173',
-  'https://busca-cnpj-leads.vercel.app', // production frontend
+  'https://busca-cnpj-leads.vercel.app',
   ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
 ]
 
