@@ -165,6 +165,10 @@ Tomei decisões de projeto, revisei o código gerado, validei o funcionamento no
 
 ## Decisões de projeto e justificativas
 
+**Interface Responsiva e Focada em UX**
+A aplicação foi construída visando a melhor experiência do usuário, sendo totalmente responsiva. O layout se adapta perfeitamente a qualquer dispositivo, desde smartphones até telas ultrawide, garantindo fluidez no uso.
+
+
 **PostgreSQL e Infraestrutura de Deploy**
 Utilizamos o PostgreSQL como banco de dados principal, garantindo maior robustez, performance e aderência a cenários reais de produção. O deploy do backend foi configurado de forma otimizada no Railway utilizando um `Dockerfile` customizado, resolvendo questões complexas de validação do Prisma WASM durante o processo de build. O frontend está hospedado na Vercel.
 
