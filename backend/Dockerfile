@@ -12,7 +12,13 @@ COPY prisma ./prisma/
 # Install all dependencies (including devDeps for build)
 RUN npm ci
 
-# Generate Prisma client (does NOT need DATABASE_URL)
+# Provide a dummy DATABASE_URL at build time so Prisma WASM can validate
+# the schema without the real connection string (only needed at runtime).
+# Railway injects the real DATABASE_URL as a runtime environment variable.
+ARG DATABASE_URL=postgresql://user:password@localhost:5432/db
+ENV DATABASE_URL=${DATABASE_URL}
+
+# Generate Prisma client
 RUN npx prisma generate
 
 # Copy source code
