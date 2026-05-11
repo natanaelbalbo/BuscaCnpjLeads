@@ -8,9 +8,13 @@ WORKDIR /app
 COPY package*.json ./
 COPY prisma ./prisma/
 
+# Disable @prisma/client postinstall hook that auto-runs `prisma generate`
+# during `npm ci` — at that point DATABASE_URL doesn't exist yet.
+ENV PRISMA_SKIP_POSTINSTALL_GENERATE=1
+
 RUN npm ci
 
-# Pass dummy DATABASE_URL inline so Prisma WASM validator sees it during build.
+# Now run generate manually with a dummy URL so Prisma WASM can validate the schema.
 # The real DATABASE_URL from Railway is injected at container runtime.
 RUN DATABASE_URL="postgresql://user:password@localhost:5432/db" npx prisma generate
 
