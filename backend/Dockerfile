@@ -19,7 +19,7 @@ RUN npm run build
 COPY entrypoint.sh ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 
-EXPOSE 3333
+EXPOSE 8080
 
 # Railway MUST inject DATABASE_URL at runtime. The entrypoint script
 # checks for it and shows diagnostics if missing.
