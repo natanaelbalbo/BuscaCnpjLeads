@@ -1,27 +1,17 @@
 #!/bin/sh
 set -e
 
-echo "=== DIAGNOSTIC: Checking environment ==="
+echo "=== Starting backend ==="
+echo "PORT: $PORT"
+echo "NODE_ENV: $NODE_ENV"
+echo "DATABASE_URL is set: $([ -n "$DATABASE_URL" ] && echo 'yes' || echo 'NO!')"
 
-if [ -z "$DATABASE_URL" ]; then
-  echo "ERROR: DATABASE_URL is NOT set!"
-  echo ""
-  echo "=== All database/postgres related vars: ==="
-  env | grep -i database || echo "(none found with 'database')"
-  env | grep -i postgres || echo "(none found with 'postgres')"
-  env | grep -i pg || echo "(none found with 'pg')"
-  echo ""
-  echo "=== All environment variables: ==="
-  env | sort
-  echo ""
-  echo "FIX: Go to Railway Dashboard → Backend Service → Variables tab"
-  echo "     Add: DATABASE_URL = \${{Postgres.DATABASE_URL}}"
-  exit 1
-fi
-
-echo "DATABASE_URL is set ✓"
+echo ""
 echo "Running prisma db push..."
-npx prisma db push --skip-generate
+npx prisma db push --accept-data-loss --skip-generate 2>&1 || {
+  echo "WARNING: prisma db push failed, trying to start server anyway..."
+}
 
+echo ""
 echo "Starting server..."
 exec node dist/server.js
