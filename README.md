@@ -193,7 +193,7 @@ Configurei um pipeline de CI utilizando GitHub Actions (`.github/workflows/ci.ym
 
 ## Tempo gasto
 
-Aproximadamente 1h30m de planejamento da arquitetura e decisões de projeto, e 5h de implementação e ajustes finos de UI.
+Aproximadamente 1h30m de planejamento da arquitetura e decisões de projeto, e 6h de implementação e ajustes finos de UI.
 
 ---
 
