@@ -11,7 +11,7 @@ Aplicação full-stack para busca e enriquecimento de leads via CNPJ. O usuário
 - Express — servidor HTTP
 - Zod — validação e tipagem do payload (incluindo validação dos dígitos verificadores do CNPJ)
 - Prisma — ORM tipesafe
-- SQLite — banco de dados local, sem configuração externa
+- PostgreSQL — banco de dados relacional robusto para produção
 - BrasilAPI — fonte dos dados da Receita Federal
 
 ### Frontend
@@ -35,7 +35,7 @@ Aplicação full-stack para busca e enriquecimento de leads via CNPJ. O usuário
 ### Backend (`backend/.env`)
 
 ```env
-DATABASE_URL="file:./dev.db"
+DATABASE_URL="postgresql://user:password@localhost:5432/db"
 PORT=3333
 ```
 
@@ -63,6 +63,7 @@ cd letalk-cnpj
 ```bash
 cd backend
 cp .env.example .env
+# Certifique-se de configurar a DATABASE_URL no .env apontando para o seu PostgreSQL
 npm install
 npm run db:push
 npm run dev
@@ -164,8 +165,8 @@ Tomei decisões de projeto, revisei o código gerado, validei o funcionamento no
 
 ## Decisões de projeto e justificativas
 
-**SQLite em vez de PostgreSQL**
-Elimina a necessidade de configurar banco externo. Qualquer pessoa clona o repositório, roda `npm run db:push` e já funciona. Para produção no Railway, o disco persistente garante que os dados sobrevivam entre deploys.
+**PostgreSQL e Infraestrutura de Deploy**
+Utilizamos o PostgreSQL como banco de dados principal, garantindo maior robustez, performance e aderência a cenários reais de produção. O deploy do backend foi configurado de forma otimizada no Railway utilizando um `Dockerfile` customizado, resolvendo questões complexas de validação do Prisma WASM durante o processo de build. O frontend está hospedado na Vercel.
 
 **Express em vez de Fastify ou NestJS**
 Mais simples e direto ao ponto para o escopo do teste. O NestJS seria overengineering para uma API de três rotas.
